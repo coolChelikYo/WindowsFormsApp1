@@ -12,10 +12,19 @@ namespace WindowsFormsApp1.Services
     {
         public static void SaveToFile(Entity entity)
         {
-            // StreamWriter записує текст у файл data.txt
+           
             using (StreamWriter sw = new StreamWriter("data.txt", true))
             {
                 sw.WriteLine(entity.GetInfo());
+            }
+        }
+        public static void SaveToFile(Entity entity, string date)
+        {
+          
+            using (StreamWriter sw = new StreamWriter("data.txt", true))
+            {
+                
+                sw.WriteLine($"{entity.GetInfo()} | Date: {date}");
             }
         }
     }
