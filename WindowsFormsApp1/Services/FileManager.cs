@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Services
 {
     public static class FileManager
     {
-        public static void SaveToFile(Entity entity)
+        public static void Add(Entity entity)
         {
-           
-            using (StreamWriter sw = new StreamWriter("data.txt", true))
-            {
-                sw.WriteLine(entity.GetInfo());
-            }
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (!entity.IsValid()) throw new Exception("Entity is invalid");
+
+            entity.Next = Entity.Head;
+            Entity.Head = entity;
+
+           // string record = entity.Format();
+           // File.AppendAllText(entity.FileName, record + Environment.NewLine);
         }
+
         public static void SaveToFile(Entity entity, string date)
         {
-          
-            using (StreamWriter sw = new StreamWriter("data.txt", true))
-            {
-                
-                sw.WriteLine($"{entity.GetInfo()} | Date: {date}");
-            }
+            if (entity == null) return;
+            
+            string record = $"{entity.Format()} | Date: {date}";
+            File.AppendAllText(entity.FileName, record + Environment.NewLine);
         }
     }
 }

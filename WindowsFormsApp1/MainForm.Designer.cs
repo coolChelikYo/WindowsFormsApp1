@@ -31,13 +31,15 @@ namespace WindowsFormsApp1
         {
             this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.Namef = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TicketNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
-            this.TicketNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // materialListView1
@@ -47,9 +49,9 @@ namespace WindowsFormsApp1
             this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Namef,
-            this.email,
+            this.TicketNumber,
             this.date,
-            this.TicketNumber});
+            this.email});
             this.materialListView1.Depth = 0;
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HideSelection = false;
@@ -68,13 +70,17 @@ namespace WindowsFormsApp1
             // 
             this.Namef.Text = "Name";
             // 
-            // email
-            // 
-            this.email.Text = "email";
-            // 
             // date
             // 
             this.date.Text = "date";
+            // 
+            // TicketNumber
+            // 
+            this.TicketNumber.Text = "TicketNumber";
+            // 
+            // email
+            // 
+            this.email.Text = "email";
             // 
             // materialTextBox21
             // 
@@ -100,7 +106,6 @@ namespace WindowsFormsApp1
             this.materialTextBox21.Size = new System.Drawing.Size(250, 48);
             this.materialTextBox21.TabIndex = 1;
             this.materialTextBox21.TabStop = false;
-            this.materialTextBox21.Text = "materialTextBox21";
             this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialTextBox21.TrailingIcon = null;
             this.materialTextBox21.UseSystemPasswordChar = false;
@@ -129,10 +134,10 @@ namespace WindowsFormsApp1
             this.materialTextBox22.Size = new System.Drawing.Size(250, 48);
             this.materialTextBox22.TabIndex = 2;
             this.materialTextBox22.TabStop = false;
-            this.materialTextBox22.Text = "materialTextBox22";
             this.materialTextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.materialTextBox22.TrailingIcon = null;
             this.materialTextBox22.UseSystemPasswordChar = false;
+            this.materialTextBox22.Click += new System.EventHandler(this.materialTextBox22_Click);
             // 
             // dateTimePicker1
             // 
@@ -165,22 +170,38 @@ namespace WindowsFormsApp1
             this.materialButton1.UseVisualStyleBackColor = true;
             this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
             // 
-            // TicketNumber
+            // label1
             // 
-            this.TicketNumber.Text = "TicketNumber";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(527, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Text";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(527, 214);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Number of ticket";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.materialTextBox22);
             this.Controls.Add(this.materialTextBox21);
             this.Controls.Add(this.materialListView1);
             this.Name = "MainForm";
-            this.Text = "Concer Schedule";
+            this.Text = "Park work";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -198,6 +219,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private System.Windows.Forms.ColumnHeader TicketNumber;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
