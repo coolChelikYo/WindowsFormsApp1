@@ -56,6 +56,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ammusment park.cs" />
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -88,6 +91,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0-02-0a-6ca8cb616311b95ed4ed7501dfe2942fdec4bfff66ab240ffa01ed8a9f624032_e7b0fe60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0-02-05-66eb96f90dfaba118a4724bed14a5a37e6e9e4b28ec629b3d3c080096014fae9_d4b195ce.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

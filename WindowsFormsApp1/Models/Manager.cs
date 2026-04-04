@@ -2,39 +2,25 @@
 
 namespace WindowsFormsApp1.Models
 {
-    public sealed class Manager : Person
+    public sealed  class Manager : Person
     {
-        public string Department { get; set; }
+        public string Password { get; set; }
 
-        public Manager() : base()
+        public Manager()
         {
-            Department = "General";
+            Password = string.Empty;
         }
 
-        public Manager(Guid id, string name, string email, string department) 
-            : base(id, name, email)
+        public Manager(Guid id, string firstName, string lastName, string email, string password)
+            : base(id, firstName, lastName, email)
         {
-            Department = department;
+            Password = password;
         }
 
-        public override string GetInfo()
+        public new bool IsValid()
         {
-            return base.GetInfo() + " | Department: " + Department;
-        }
-
-        public override string Format()
-        {
-            return $"Manager|{Id}|{Name}|{Email}|{Department}";
-        }
-
-        public override string GetRole()
-        {
-            return "Manager of " + Department;
-        }
-
-        public void ChangeDepartment(string newDepartment)
-        {
-            Department = newDepartment;
+            
+            return !string.IsNullOrEmpty(Password);
         }
     }
 }

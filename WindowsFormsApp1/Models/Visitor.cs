@@ -4,37 +4,27 @@ namespace WindowsFormsApp1.Models
 {
     public class Visitor : Person
     {
-        public string TicketNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public Visitor() : base()
+        public Visitor()
         {
-            TicketNumber = "000-000";
+            PhoneNumber = string.Empty;
         }
 
-        public Visitor(Guid id, string name, string email, string ticketNumber) 
-            : base(id, name, email)
+        public Visitor(Guid id, string firstName, string lastName, string email, string phoneNumber)
+            : base(id, firstName, lastName, email)
         {
-            TicketNumber = ticketNumber;
+            PhoneNumber = phoneNumber;
         }
 
-        public sealed override string GetInfo()
+        public new bool IsValid()
         {
-            return base.GetInfo() + " | Ticket: " + TicketNumber;
+            return base.IsValid() && !string.IsNullOrEmpty(PhoneNumber);
         }
 
-        public override string Format()
+        public override sealed string Format()
         {
-            return $"Visitor|{Id}|{Name}|{Email}|{TicketNumber}";
-        }
-
-        public override string GetRole()
-        {
-            return "Active Visitor";
-        }
-
-        public bool HasTicket()
-        {
-            return !string.IsNullOrEmpty(TicketNumber);
+            return $"[{base.Format()}][{PhoneNumber}]";
         }
     }
 }

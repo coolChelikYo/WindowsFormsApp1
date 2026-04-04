@@ -2,71 +2,47 @@
 
 namespace WindowsFormsApp1.Models
 {
-    public class Person : Entity
+     
+    public class Person : Entity,IEntity 
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
-        
-        public new string FileName { get; set; } = "people.txt";
 
-        public Person() : base()
+        public Person()
         {
-            Name = "Unknown";
-            Email = "None";
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
         }
 
-        public Person(Guid id, string name, string email) : base(id)
+        public Person(Guid id, string firstName, string lastName, string email) : base(id)
         {
-            Name = name;
+            FirstName = firstName;
+            LastName = lastName;
             Email = email;
         }
 
-        public override bool IsValid()
+        public new bool IsValid()
         {
-            return base.IsValid() && !string.IsNullOrEmpty(Name);
+            return base.IsValid() &&
+                   !string.IsNullOrEmpty(FirstName) &&
+                   !string.IsNullOrEmpty(LastName) &&
+                   !string.IsNullOrEmpty(Email);
         }
+        public override bool Search(string searchString)
+{
+    if (string.IsNullOrEmpty(searchString)) return false;
 
-        public override string GetInfo()
-        {
-            return base.GetInfo() + " | Name: " + Name + " | Email: " + Email;
-        }
+    string search = searchString.ToLower();
 
+    return (FirstName != null && FirstName.ToLower().Contains(search)) || 
+           (LastName != null && LastName.ToLower().Contains(search)) || 
+           (Email != null && Email.ToLower().Contains(search));
+}
         public override string Format()
-        {
-            return $"Person|{Id}|{Name}|{Email}";
-        }
-
-        public virtual string GetRole()
-        {
-            return "Visitor";
-        }
-
-        public void UpdateEmail(string newEmail)
-        {
-            Email = newEmail;
-        }
-    }
-
-    public sealed class Employee : Person
-    {
-        public string Position { get; set; }
-
-        public Employee() : base() { }
-
-        public Employee(Guid id, string name, string email, string position) 
-            : base(id, name, email)
-        {
-            Position = position;
-        }
-
-        public override string GetRole()
-        {
-            return "Staff: " + Position;
-        }
-
-        public override string GetInfo()
-        {
-            return base.GetInfo() + " | Position: " + Position;
-        }
+{
+    return $"{base.Format()}[{FirstName}][{LastName}][{Email}]";
+}
     }
 }

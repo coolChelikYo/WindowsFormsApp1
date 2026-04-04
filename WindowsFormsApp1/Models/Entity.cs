@@ -4,10 +4,11 @@ using System.IO;
 
 namespace WindowsFormsApp1.Models
 {
+
     public class Entity
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string FileName { get; set; } = "data.txt";
+        public virtual string FileName { get; set; } = "data.txt";
         public static Entity Head = null;
         public Entity Next { get; set; }
         public Entity() 
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1.Models
         {
             return Id != Guid.Empty;
         }
+        public virtual bool Search(string searchString) => false;
         public virtual string GetInfo()
         {
             return "ID: " + Id.ToString();
